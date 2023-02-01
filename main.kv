@@ -1,0 +1,137 @@
+
+#:import Factory kivy.factory.Factory
+
+
+<MyTextInput@TextInput>:
+    text: "5"
+    multiline: False
+    on_text_validate: app.main.text_validated(self)
+    background_normal: ""
+    background_active: ""
+    background_color: (1, 1, 1, 1)
+    cursor_color: (0, 0, 0)
+    font_size: dp(13)
+
+<InputLabel@Label>:
+    text: "OK"
+
+<MessagePop@ModalView>:
+    id: MessagePop
+    auto_dismiss: True
+    size_hint: None, None
+    height: dp(40)
+    width: dp(80)
+    Label:
+        text: "copied"
+
+<InputContener@BoxLayout>:
+    padding: dp(3), dp(1)
+    size_hint: None, None
+    width: dp(60)
+    height: dp(30)
+    canvas:
+        Color:
+            # rgb: (.5, .5, .5)
+            rgb: (1, 1, 1)
+
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [4, 4, 4, 4]
+    
+
+<MainWidgt>:
+    alpha_lenght: alpha_lenght
+    digit_lenght: digit_lenght
+    symbol_lenght: symbol_lenght
+
+    result_label: result_label
+    copy_button: copy_button
+    # canvas.before:
+    #     Color:
+    #         rgb: (1, 1, 1)
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
+
+    BoxLayout:
+        size: root.size
+        orientation: "vertical"
+        spacing: dp(10)
+        BoxLayout:
+            size_hint_y: .2 
+            Label:
+                text: "Custum"
+                text_size: self.size
+                halign: "left"
+                valign: "center"
+                padding: dp(10), dp(10)
+                size_hint_x: None
+                width: dp(85)
+            CheckBox:
+                size_hint_x: None
+                width: dp(40)
+                on_press: app.main.customization(self)
+
+        BoxLayout:
+            size_hint_y: .32
+            # height: dp(50)
+            BoxLayout:
+                padding: dp(10), dp(3)
+                spacing: dp(20)
+                BoxLayout:
+                    InputLabel:
+                        text: "Alphabet"
+                    InputContener:
+                        MyTextInput:
+                            id: alpha_lenght
+                    
+                BoxLayout:    
+                    InputLabel:
+                        text: "Chiffre"
+                    InputContener:
+                        MyTextInput:
+                            id: digit_lenght
+
+                BoxLayout:
+                    InputLabel:
+                        text: "Symbols"
+                    InputContener:
+                        MyTextInput:
+                            id: symbol_lenght
+            RelativeLayout:
+                    # padding: dp(7), dp(3)
+                size_hint_x: .2
+                Button:
+                    text: "Generate"
+                    on_release: app.main.text_validated(self)
+                    size_hint: None, None
+                    width: dp(74)
+                    height: dp(35)
+                    pos_hint: {"center_x": .5}
+            
+        Widget:
+            Label:
+                id: result_label
+                text: "Generate a random secure password"
+                pos: root.center_x-self.width/2, root.center_y-self.height/1.75
+                font_size: dp(20)
+                pos_hint: {"top": 1}
+                bold: True
+            Button:
+                id: copy_button
+                pos: root.center_x-self.width/2, root.center_y-75
+                disabled: True
+                size_hint: None, None
+                height: dp(32)
+                width: dp(80)
+                text: "copy"
+                pos_hint: {"center_x": .5, "y": .20}
+                on_release: app.main.copy_button_click(), Factory.MessagePop().open()
+            
+                
+            
+
+
+
+
