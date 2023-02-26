@@ -6,7 +6,8 @@ Simple générateur de mot de passe avec interface utilisateur.
 
 ### Fonctionnalités 
 - Possible choisir le type de caractère 
-- Le nombre de caractère
+- Personnaliser le nombre d'occurrence des types caractères
+- Possibilité de générer de manière aléatoire 
 - Génération infinie
 
 
