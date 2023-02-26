@@ -12,9 +12,6 @@ Simple générateur de mot de passe avec interface utilisateur.
 
 
 ### Installation 
-- Cloner le repo
-- Entrer dans le projet
-- Créer un environnement virtuel et l'activer
-- Installer les dépendances
+- Cloner le repo chez (aide: https://github.com/diabycode/InstallGitHubProjet)
 - Exécute le fichier 'main_app.py'
 
